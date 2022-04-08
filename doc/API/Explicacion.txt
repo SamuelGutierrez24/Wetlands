@@ -1,0 +1,2 @@
+Cuando se ejecuta el comando de javadoc da a un error ya que no comprende las importaciones de model a ui.
+Por lo tanto lo borre mas en el codigo esta todo bien documentado.
