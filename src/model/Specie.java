@@ -18,7 +18,7 @@ public class Specie {
 	private boolean isMigratory;
 	/**Variable: type String
 	this is the variable that says the specific tipe of the specie(like: flying terrestrial)*/
-	private String type;
+	private SpecieSpecificType type;
 	/**Variable: habitat array
 	this is the array that asociates a specie to different wetlands*/
 	private Wetland[] habitat;
@@ -30,14 +30,14 @@ public class Specie {
 	* @param The parameters in this method are the the characteristics need for regist a new Specie.(String floraOrFauna, String n, String scientificName, boolean mygratory, String type)
 	* @return Return a new object Specie
 	*/
-	public Specie(SpecieType floraOrFauna, String n, String scientificName, boolean mygratory, String type){
+	public Specie(SpecieType floraOrFauna, String n, String scientificName, boolean mygratory, SpecieSpecificType type){
 		
 		this.floraOrFauna = floraOrFauna;
 		name = n;
 		this.scientificName = scientificName;
 		isMigratory = mygratory;
 		this.type = type;
-		habitat = new Wetland [200];
+		habitat = new Wetland [80];
 		
 	}
 	
@@ -65,12 +65,58 @@ public class Specie {
 		return isMigratory;
 	}
 
-	public String getType() {
+	public SpecieSpecificType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(SpecieSpecificType type) {
 		this.type = type;
 	}
 
+	public int wetlandSpace(){
+		
+		int position = -1;
+			
+				
+			for(int i = 0 ; i<200 && position==-1;i++){
+				if(habitat[i]==null){
+					position = i;
+				}
+			}
+		return position;
+	}
+
+	public void addWetland2Specie(Wetland wetland){
+
+		int i = wetlandSpace();
+		habitat[i] = wetland;
+
+	}
+
+	public boolean isFlora(){
+
+		boolean out = false;
+
+		if(floraOrFauna == SpecieType.FLORA){
+			out = true;
+		}
+		return out;
+	}
+
+	public String toStringWetlands(){
+
+		String out = "";
+
+		for(int i = 0;i<habitat.length;i++){
+
+			if(habitat[i] != null){
+
+				out += "- " + habitat[i].getName() + "\n";
+
+			}
+
+		}
+		
+		return out;
+	}
 }

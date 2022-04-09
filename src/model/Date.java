@@ -45,7 +45,7 @@ package model;
 		}
 
 	
-	public void setMounth(int mount) {
+	public void setMounth(int mounth) {
 		this.mounth = mounth;
 	}
 

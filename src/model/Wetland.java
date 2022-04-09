@@ -27,7 +27,7 @@ public class Wetland {
 	private boolean protectedStatus;
 	/**Variable: ambientalPlan manageAmbientalPlan
 	this is the variable that save the info of the ambiental plan of the wetland*/
-	private manageAmbientalPlan ambientalPlan;
+	private double ambientalPlan;
 	/**Variable: wetlandEvents array
 	this is the array that saves all events in the wetland*/
 	private Event [] wetlandEvents;
@@ -48,7 +48,7 @@ public class Wetland {
 		(ambientalPlan)(manageAmbientalPlan)need to be create already the ambiental plan
 	* @return Return a new object Wetland that will be safe in the dagma system.
 	*/
-	public Wetland (String name, Location zone, Type type, int length, String urlPhoto, boolean protectedStatus){
+	public Wetland (String name, Location zone, Type type, int length, String urlPhoto, boolean protectedStatus, double ambientalPlan){
 		
 		species = new Specie [200];
 		wetlandEvents = new Event [100];
@@ -58,6 +58,7 @@ public class Wetland {
 		this.length = length;
 		this.urlPhoto = urlPhoto;
 		this.protectedStatus = protectedStatus;
+		this.ambientalPlan = ambientalPlan;
 	}
 	
 	
@@ -105,24 +106,102 @@ public class Wetland {
 		this.protectedStatus = protectedStatus;
 	}
 	
-	public manageAmbientalPlan getAmbientalPlan(){
+	public double getAmbientalPlan(){
 		return ambientalPlan;
 	}
 	
-	public void setAmbientalPlan (manageAmbientalPlan ambiental){
+	public void setAmbientalPlan (double ambiental){
 		
 		ambientalPlan = ambiental;
 		
 	}
+
+	public int speciesSpace(){
+
+		int position = -1;
+			
+				
+			for(int i = 0 ; i<200 && position==-1;i++){
+				if(species[i]==null){
+					position = i;
+				}
+			}
+		return position;		
+	}
+	public void addSpecie2Wetland(Specie specie){
+		
+		int i = speciesSpace();
+		species[i] = specie;
 	
-	public String addSpecie(){
-		return "Agregado";
+
+
 	}
 	
-	//public Specie findSpecie(){
-		//return ;
-	//}
-	public boolean hasSpace(){
-		return true;
+	public boolean alreadyRegistedSpecie(Specie specie){
+		
+		boolean registed = false;
+		
+		for(int i = 0;i<species.length;i++){
+			
+			if (species[i] != null){
+				if(species[i].equals(specie)){
+				registed = true;
+				}
+			}
+		}
+		return registed;
+	}
+	
+
+	public int eventSpace(){
+
+		int position = -1;
+			
+				
+			for(int i = 0 ; i<100 && position==-1;i++){
+				if(wetlandEvents[i]==null){
+					position = i;
+				}
+			}
+		return position;		
+	}
+
+	public void addEvent2Wetland(Event event){
+		
+		int i = speciesSpace();
+		wetlandEvents[i] = event;
+	
+
+
+	}
+
+	public int maintanceInTheYear(int year){
+
+		int index = 0;
+
+		for(int i = 0;i<wetlandEvents.length;i++){
+
+			if(wetlandEvents[i] != null){
+				index += wetlandEvents[i].countMaintance(year);
+			}
+
+		}
+
+		return index;
+	}
+	
+	public int countFlora(){
+
+		int count = 0;
+		for(int i = 0;i<species.length;i++){
+
+			if(species[i] !=null){
+
+				if(species[i].isFlora() == true)
+					count +=1;
+			}
+
+		}
+		return count;
 	}
 }

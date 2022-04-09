@@ -7,7 +7,9 @@ public class Event {
 	
 	/**Variable: typeEvent String
 	this is the variable that infor about the type of event(Scholar, celebrations, maintance,etc...)*/
-	private String typeEvent;
+	private EventType typeEvent;
+
+	private String boss;
 	/**Variable: eventDate Date
 	this is the variable that take the value of the object Date for have a date for the event*/
 	private Date eventDate;
@@ -25,20 +27,21 @@ public class Event {
 	* @param The parameters in this method are the global variables that need to be already initialized with a value.(type) String, (eventDate)Date, (cost)double, (description)String 
 	* @return Return a objec Event
 	*/
-	public Event(String type, Date eventDate, double c, String description){
+	public Event(EventType type, String boss, Date eventDate, double c, String description){
 		
 		typeEvent = type;
+		this.boss = boss;
 		this.eventDate = eventDate;
 		cost = c;
 		this.description = description;
 		
 	}
 	
-	public String getTypeEvent(){
+	public EventType getTypeEvent(){
 		return typeEvent;
 	}
 	
-	public void setTypeEvent(String type){
+	public void setTypeEvent(EventType type){
 		this.typeEvent = type;
 	}
 	
@@ -66,9 +69,33 @@ public class Event {
 	public void setCost(double cost) {
 		this.cost = cost;
 	}
-
+	
 	public String getDescription() {
 		return description;
 	}
+
+	public String getBoss(){
+		return boss;
+	}
+	public void setBoss(String boss){
+		this.boss = boss;
+	}
+
+	public int countMaintance(int year){
+
+		int count = 0;
+
+		if(eventDate.getYear()==year){
+
+			if(typeEvent==EventType.MAINTANCE){
+				count +=1;
+			}
+
+		}
+
+		return count;
+
+	}
+
 
 }
