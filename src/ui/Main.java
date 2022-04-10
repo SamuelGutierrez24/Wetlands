@@ -5,6 +5,8 @@ import model.Dagma;
 
 import java.util.Scanner;
 
+
+
 public class Main{
 	
 	private Dagma dagma;
@@ -83,6 +85,12 @@ public class Main{
 			break;
 		case 7 :
 			wetlandsOfSpecie();
+			break;
+		case 8 :
+			wetlandsInfo();
+			break;
+		case 9 :
+			mostFauna();
 			break;
 		default:
 			System.out.println("invalid option");
@@ -163,7 +171,7 @@ public class Main{
 		public void addSpecietoWetland(){
 			
 			int specie;
-			System.out.println("Select the number of a regist Specie or 0 if the Specie is not registed" );
+			System.out.println("For regist a specie in Wetland. \n Select the number of a regist Specie or 0 if the Specie is not registed" );
 			System.out.println(dagma.showRegistedSpecies());
 			specie = sc.nextInt();
 			sc.nextLine();
@@ -333,6 +341,19 @@ public class Main{
 			System.out.println(dagma.wetlandsOfASpecie(specieNum));
 		}
 	}
-		
+	/**This method show all the information registered in all wetlands.
+	  */
+	public void wetlandsInfo(){
+
+		System.out.println(dagma.infoWetlands());
+
+	}
+	/**This method show the name of the wetland with most fauna Species.
+	  */
+	public void mostFauna(){
+
+		System.out.println(dagma.wetlandMostFauna());
+
+	}
 	
 }

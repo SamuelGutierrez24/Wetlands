@@ -204,4 +204,77 @@ public class Wetland {
 		}
 		return count;
 	}
+
+	public String toString(){
+
+		return "name : " + getName() + "\n" +
+		"Location : " + getZone() + "\n" +
+		"Type : " + getType() + "\n" +
+		"Length : " + getLength() + "Klm2 \n" +
+		"Photo Url : " + getUrlPhoto() + "\n" +
+		"Is a protected zone? : " + getProtectedStatus() + "\n" +
+		"porcentage of Ambiental plan :" + getAmbientalPlan() + "% \n" +
+		" Species : \n" + stringSpecies();
+
+	}
+
+	public String stringSpecies(){
+
+		int af,lf,b,mam,aq;
+		af = 0;
+		lf = 0;
+		b = 0;
+		mam = 0;
+		aq = 0;
+		for(int i = 0;i<species.length;i++){
+			if(species[i] != null){
+
+
+				if(species[i].getType().equals(SpecieSpecificType.AQUATIC_FLORA)){
+					af += 1;
+				}
+
+				if(species[i].getType().equals(SpecieSpecificType.LAND_FLORA)){
+					lf +=1;
+				}
+
+				if(species[i].getType().equals(SpecieSpecificType.BIRD)){
+					b += 1;
+				}
+
+				if(species[i].getType().equals(SpecieSpecificType.MAMMAL)){
+					mam += 1;
+				}
+
+				if(species[i].getType().equals(SpecieSpecificType.AQUATIC)){
+					aq += 1;
+				}
+			}
+
+
+			
+		}
+
+		return "Aquatic flora :" + af + "\n" +
+		"Land flora :" + lf + "\n" +
+		"Birds :" + b + "\n" +
+		"Mammals :" + mam + "\n" +
+		"Aquatic :" + aq + "\n" ;
+		
+	}
+
+	public int countFauna(){
+
+		int count = 0;
+		for(int i = 0;i<species.length;i++){
+
+			if(species[i] !=null){
+
+				if(species[i].isFauna() == true)
+					count +=1;
+			}
+
+		}
+		return count;
+	}
 }

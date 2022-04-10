@@ -87,6 +87,7 @@ import java.util.Scanner;
 		}
 		/**This method creates an object wetland and save him to the array of wetlands
 	 * @return a string for confirm is added.
+	 * @param name,zone,type,length,url,status,ambientalplan those params are the information need to create a new wetland.
 	  */
 		public String addWetland(String name,int zone, int type, int length,String url, Boolean status, double ambientalPlan ){
 			
@@ -414,6 +415,51 @@ import java.util.Scanner;
 			String out = "";
 
 			out = allSpecies[specie-1].toStringWetlands();
+
+			return out;
+
+		}
+		/**This method show the information of all the registered wetlands.
+	 * @return a string with the name and the information of all wetlands.
+	  */
+		public String infoWetlands(){
+
+			String out = "";
+			
+			for(int i = 0;i<MAX_WETLANDS;i++){
+
+				if(wetlands[i]!=null){
+
+					out += wetlands[i].toString() + "\n"; 
+
+				}
+
+			}
+
+			return out;
+		}
+		/**This method show the name of the wetland with most fauna species
+	 * @return a string of the name of the wetland. */
+		public String wetlandMostFauna(){
+
+			String out = "";
+
+			
+			int position = wetlands[0].countFauna();
+			for(int i = 1;i<MAX_WETLANDS;i++){
+
+				if(wetlands[i] != null){
+
+					if(position<wetlands[i].countFauna()){
+						position = i;
+					}
+					
+
+				}
+
+			}
+			out = wetlands[position].getName();
+
 
 			return out;
 

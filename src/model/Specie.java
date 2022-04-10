@@ -119,4 +119,13 @@ public class Specie {
 		
 		return out;
 	}
+	public boolean isFauna(){
+
+		boolean out = false;
+
+		if(type == SpecieSpecificType.BIRD ||type == SpecieSpecificType.MAMMAL|| type == SpecieSpecificType.AQUATIC ){
+			out = true;
+		}
+		return out;
+	}
 }
