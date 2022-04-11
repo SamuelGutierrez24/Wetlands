@@ -162,7 +162,7 @@ import java.util.Scanner;
 		public boolean sameSpecie(String name){
 			
 			boolean repeated = false;
-		for(int i = 0; i<MAX_SPECIES && repeated != false;i++){
+		for(int i = 0; i<MAX_SPECIES ;i++){
 			
 			if(allSpecies[i].getName().equals(name)){
 				repeated = true;
@@ -353,6 +353,16 @@ import java.util.Scanner;
 			}
 			
 			return out;
+		}
+
+		public boolean verifyEventType(int num){
+
+			boolean hello =false;
+			if (num == 1 || num ==2 || num==3 ||num==4){
+				hello= true;
+			}
+			return hello;
+
 		}
 		//---------------------------------------------
 		/**This method show the cuantity of events in all wetlands maintance in a year determinate.

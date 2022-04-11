@@ -168,7 +168,7 @@ public class Wetland {
 
 	public void addEvent2Wetland(Event event){
 		
-		int i = speciesSpace();
+		int i = eventSpace();
 		wetlandEvents[i] = event;
 	
 

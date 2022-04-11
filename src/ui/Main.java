@@ -270,6 +270,8 @@ public class Main{
 		typeEvent = sc.nextInt();
 		sc.nextLine();
 
+		if(dagma.verifyEventType(typeEvent)==true){
+			
 		String boss;
 		System.out.println("Name of the boss of the event");
 		boss = sc.nextLine();
@@ -304,9 +306,14 @@ public class Main{
 
 		if(dagma.wetlandExist(wetland)){
 
+		
 		System.out.println(dagma.createEvent(typeEvent, boss, d, m, y, cost, desc,wetland));
+		
 		}else{
 			System.out.println("ERROR, the wetland you select doesn't exist");
+		}
+		}else{
+			System.out.println("Invalid selection of type.");
 		}
 	}
 	/**This method recives the year for calculate in all wetlands the events maintance in that year and show in screen.
